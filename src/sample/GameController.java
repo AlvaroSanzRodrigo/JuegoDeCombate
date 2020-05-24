@@ -11,14 +11,15 @@ public class GameController {
 
     private Character enemy;
     private Character player;
-    private ActionStrategy actionStrategy;
+    private ActionStrategy playerActionStrategy;
+    private ActionStrategy enemyActionStrategy;
 
-    public ActionStrategy getActionStrategy() {
-        return actionStrategy;
+    public ActionStrategy getPlayerActionStrategy() {
+        return playerActionStrategy;
     }
 
-    public void setActionStrategy(ActionStrategy actionStrategy) {
-        this.actionStrategy = actionStrategy;
+    public void setPlayerActionStrategy(ActionStrategy playerActionStrategy) {
+        this.playerActionStrategy = playerActionStrategy;
     }
 
     public static GameController getmGameController() {
@@ -41,8 +42,21 @@ public class GameController {
         this.player = player;
     }
 
+    public ActionStrategy getEnemyActionStrategy() {
+        return enemyActionStrategy;
+    }
+
+    public void setEnemyActionStrategy(ActionStrategy enemyActionStrategy) {
+        this.enemyActionStrategy = enemyActionStrategy;
+    }
+
     //Realiza la accion del jugador segun la estrategia que posea
     public void playerAction(){
-        actionStrategy.action(this.player, this.enemy);
+        playerActionStrategy.action(this.player, this.enemy);
+    }
+
+    //Realiza la accion del enemigo segun la estrategia que posea
+    public void enemyAction(){
+        playerActionStrategy.action(this.enemy, this.player);
     }
 }

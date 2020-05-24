@@ -9,8 +9,6 @@ import javafx.scene.control.ProgressBar;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import javax.print.DocFlavor;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Controller {
@@ -54,7 +52,18 @@ public class Controller {
     private void attackButton()
     {
         // Cuando se pulsa atacar actualizamos la estrategia del personaje, la ejecutamos y colocamos al personaje en el estado de espera
-        GameController.getInstance().setActionStrategy(new AttackAction());
+        GameController.getInstance().setPlayerActionStrategy(new AttackAction());
+        GameController.getInstance().playerAction();
+        GameController.getInstance().getPlayer().setTurnState(TurnState.WAITING);
+        // TODO: ACCION DEL ENEMIGO
+        // TODO: RESTAURACION DE VARIABLES
+        // actualizamos la interfaz grafica con lo ocurrido
+        refreshScene();
+    }
+
+    @FXML
+    private void defenseButton(){
+        GameController.getInstance().setPlayerActionStrategy(new DefenseAction());
         GameController.getInstance().playerAction();
         GameController.getInstance().getPlayer().setTurnState(TurnState.WAITING);
         // TODO: ACCION DEL ENEMIGO
