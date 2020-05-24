@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+
+<DialogPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <header>
+      <Label alignment="CENTER" text="Escoge arma" />
+   </header>
+   <graphic>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/weapons/sword.png" />
+         </image>
+      </ImageView>
+   </graphic>
+   <content>
+      <ListView prefHeight="200.0" prefWidth="200.0" />
+   </content>
+</DialogPane>

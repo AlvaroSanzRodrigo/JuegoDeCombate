@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:controller="sample.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="117.0" prefWidth="600.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="73.0" />
+            <ImageView fitHeight="185.0" fitWidth="448.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/characters/7.png" />
+               </image></ImageView>
+            <VBox alignment="TOP_RIGHT" prefHeight="197.0" prefWidth="301.0">
+               <children>
+                  <Label fx:id="enemyName" alignment="CENTER" contentDisplay="CENTER" prefHeight="74.0" prefWidth="883.0" text="Nombre" textAlignment="CENTER" />
+                  <ProgressBar fx:id="enemyLife" prefHeight="26.0" prefWidth="301.0" progress="1.0" style="-fx-accent: green;" />
+                  <Label fx:id="enemyWeapon" alignment="CENTER" prefHeight="86.0" prefWidth="302.0" text="Arma" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="215.0" prefWidth="600.0">
+         <children>
+            <GridPane prefHeight="174.0" prefWidth="308.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="109.0" prefWidth="154.0" text="Atacar" onAction="#attackButton" />
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="109.0" prefWidth="154.0" text="Armas" GridPane.columnIndex="1" onAction="#chooseWeaponButton"/>
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="109.0" prefWidth="154.0" text="Defender" GridPane.rowIndex="1" />
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="109.0" prefWidth="154.0" text="Esperar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane layoutX="10.0" layoutY="10.0" prefHeight="174.0" prefWidth="308.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label fx:id="playerName" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="152.0" text="Nombre" textAlignment="CENTER" />
+                  <ImageView fitHeight="104.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@assets/characters/6.png" />
+                     </image></ImageView>
+                  <ProgressBar fx:id="playerLife" prefWidth="200.0" progress="1.0" style="-fx-accent: green;" GridPane.rowIndex="1" />
+                  <Label fx:id="playerWeapon" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="152.0" text="Arma" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+   </children>
+</VBox>
