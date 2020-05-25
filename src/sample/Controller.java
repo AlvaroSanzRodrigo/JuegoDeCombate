@@ -80,6 +80,20 @@ public class Controller {
         resetStats();
     }
 
+    @FXML
+    private void waitButton(){
+        // TODO: implement wait strategy, easy peasy lemon squezzy
+        GameController.getInstance().setPlayerActionStrategy(new WaitAction());
+        GameController.getInstance().playerAction();
+        GameController.getInstance().getPlayer().setTurnState(TurnState.WAITING);
+        // TODO: ACCION DEL ENEMIGO
+
+        // RESTAURACION DE VARIABLES
+        refreshScene();
+        // actualizamos la interfaz grafica con lo ocurrido
+        resetStats();
+    }
+
     private void refreshScene(){
         // actualizamos las barras de vida
         enemyLife.setProgress(GameController.getInstance().getEnemy().getLife() / 100);

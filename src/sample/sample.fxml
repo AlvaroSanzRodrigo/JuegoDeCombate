@@ -44,7 +44,7 @@
                   <Button alignment="CENTER" mnemonicParsing="false" prefHeight="109.0" prefWidth="154.0" text="Atacar" onAction="#attackButton" />
                   <Button alignment="CENTER" mnemonicParsing="false" prefHeight="109.0" prefWidth="154.0" text="Armas" GridPane.columnIndex="1" onAction="#chooseWeaponButton"/>
                   <Button alignment="CENTER" mnemonicParsing="false" prefHeight="109.0" prefWidth="154.0" text="Defender" GridPane.rowIndex="1" onAction="#defenseButton"/>
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="109.0" prefWidth="154.0" text="Esperar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="109.0" prefWidth="154.0" text="Esperar" GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#waitButton"/>
                </children>
             </GridPane>
             <GridPane layoutX="10.0" layoutY="10.0" prefHeight="174.0" prefWidth="308.0">
