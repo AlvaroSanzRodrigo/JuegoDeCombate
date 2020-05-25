@@ -80,6 +80,10 @@ public class Controller {
         resetStats();
     }
 
+    private void waitButton(){
+        // TODO: implement wait strategy, easy peasy lemon squezzy
+    }
+
     private void refreshScene(){
         // actualizamos las barras de vida
         enemyLife.setProgress(GameController.getInstance().getEnemy().getLife() / 100);
