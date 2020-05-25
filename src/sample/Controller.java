@@ -10,6 +10,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class Controller {
     @FXML
@@ -49,13 +50,17 @@ public class Controller {
     }
 
     @FXML
-    private void attackButton()
-    {
+    private void attackButton() {
         // Cuando se pulsa atacar actualizamos la estrategia del personaje, la ejecutamos y colocamos al personaje en el estado de espera
         GameController.getInstance().setPlayerActionStrategy(new AttackAction());
         GameController.getInstance().playerAction();
         GameController.getInstance().getPlayer().setTurnState(TurnState.WAITING);
         // TODO: ACCION DEL ENEMIGO
+        GameController.getInstance().getEnemy().setTurnState(TurnState.ACTIVE);
+        GameController.getInstance().setEnemyActionStrategy(new AttackAction());
+        GameController.getInstance().enemyAction();
+        GameController.getInstance().getEnemy().setTurnState(TurnState.WAITING);
+        GameController.getInstance().getPlayer().setTurnState(TurnState.ACTIVE);
         // TODO: RESTAURACION DE VARIABLES
         // actualizamos la interfaz grafica con lo ocurrido
         refreshScene();
@@ -67,6 +72,7 @@ public class Controller {
         GameController.getInstance().playerAction();
         GameController.getInstance().getPlayer().setTurnState(TurnState.WAITING);
         // TODO: ACCION DEL ENEMIGO
+
         // TODO: RESTAURACION DE VARIABLES
         // actualizamos la interfaz grafica con lo ocurrido
         refreshScene();
@@ -77,6 +83,10 @@ public class Controller {
         enemyLife.setProgress(GameController.getInstance().getEnemy().getLife() / 100);
         playerLife.setProgress(GameController.getInstance().getPlayer().getLife() / 100);
         // TODO: ACTUALIZAR ARMAS
+    }
+
+    private void resetStats(){
+        // TODO: Resetear las estadisticas alteradas del jugador y del enemigo
     }
 
     @FXML
