@@ -4,6 +4,8 @@ public class AttackAction implements ActionStrategy {
     @Override
     public void action(Character player, Character enemy) {
         //Hace la formula para calcular la vida restante del enemigo
-        enemy.setLife(enemy.getLife() - ( player.getAttackPower() +  player.getCurrentWeapon().getAttack() )); ;
+        float actualDamage = enemy.getDefensePower() - ( player.getAttackPower() +  player.getCurrentWeapon().getAttack());
+        if (actualDamage <= 0)
+            enemy.setLife(( enemy.getLife() + actualDamage )); ;
     }
 }

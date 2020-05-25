@@ -57,6 +57,6 @@ public class GameController {
 
     //Realiza la accion del enemigo segun la estrategia que posea
     public void enemyAction(){
-        playerActionStrategy.action(this.enemy, this.player);
+        enemyActionStrategy.action(this.enemy, this.player);
     }
 }

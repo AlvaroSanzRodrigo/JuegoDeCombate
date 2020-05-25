@@ -41,8 +41,8 @@ public class Controller {
     private void initialize()
     {
         // Inicializamos la batalla en la interfaz grafica
-        GameController.getInstance().setPlayer(new Character("Sanzius",100f, 20f, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 5f, 2f), TurnState.ACTIVE, ""));
-        GameController.getInstance().setEnemy(new Character("Ingieneria", 100f, 20f, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 5f, 2f), TurnState.WAITING, ""));
+        GameController.getInstance().setPlayer(new Character("Sanzius",100f, 60f, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 5f, 2f), TurnState.ACTIVE, ""));
+        GameController.getInstance().setEnemy(new Character("Ingieneria", 100f, 60f, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 5f, 2f), TurnState.WAITING, ""));
         playerName.setText(GameController.getInstance().getPlayer().getName());
         enemyName.setText(GameController.getInstance().getEnemy().getName());
         playerWeapon.setText(GameController.getInstance().getPlayer().getCurrentWeapon().getName());
@@ -64,6 +64,7 @@ public class Controller {
         // TODO: RESTAURACION DE VARIABLES
         // actualizamos la interfaz grafica con lo ocurrido
         refreshScene();
+        resetStats();
     }
 
     @FXML
@@ -72,10 +73,11 @@ public class Controller {
         GameController.getInstance().playerAction();
         GameController.getInstance().getPlayer().setTurnState(TurnState.WAITING);
         // TODO: ACCION DEL ENEMIGO
-
+ 
         // TODO: RESTAURACION DE VARIABLES
         // actualizamos la interfaz grafica con lo ocurrido
         refreshScene();
+        resetStats();
     }
 
     private void refreshScene(){
@@ -87,6 +89,11 @@ public class Controller {
 
     private void resetStats(){
         // TODO: Resetear las estadisticas alteradas del jugador y del enemigo
+        if (GameController.getInstance().getPlayerActionStrategy() instanceof DefenseAction){
+           GameController.getInstance().getPlayer().setDefensePower(GameController.getInstance().getPlayer().getDefensePower() - GameController.getInstance().getPlayer().getCurrentWeapon().getDefense() - 30);
+        } else if (GameController.getInstance().getEnemyActionStrategy() instanceof DefenseAction) {
+            GameController.getInstance().getPlayer().setDefensePower(GameController.getInstance().getEnemy().getDefensePower() - GameController.getInstance().getEnemy().getCurrentWeapon().getDefense() - 30);
+        }
     }
 
     @FXML
