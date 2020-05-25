@@ -9,9 +9,8 @@ import javafx.scene.control.ProgressBar;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import javax.print.DocFlavor;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class Controller {
     @FXML
@@ -42,8 +41,8 @@ public class Controller {
     private void initialize()
     {
         // Inicializamos la batalla en la interfaz grafica
-        GameController.getInstance().setPlayer(new Character("Sanzius",100f, 20f, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 5f, 2f), TurnState.ACTIVE, ""));
-        GameController.getInstance().setEnemy(new Character("Ingieneria", 100f, 20f, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 5f, 2f), TurnState.WAITING, ""));
+        GameController.getInstance().setPlayer(new Character("Sanzius",100f, 60f, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 5f, 2f), TurnState.ACTIVE, ""));
+        GameController.getInstance().setEnemy(new Character("Ingieneria", 100f, 60f, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 5f, 2f), TurnState.WAITING, ""));
         playerName.setText(GameController.getInstance().getPlayer().getName());
         enemyName.setText(GameController.getInstance().getEnemy().getName());
         playerWeapon.setText(GameController.getInstance().getPlayer().getCurrentWeapon().getName());
@@ -51,16 +50,34 @@ public class Controller {
     }
 
     @FXML
-    private void attackButton()
-    {
+    private void attackButton() {
         // Cuando se pulsa atacar actualizamos la estrategia del personaje, la ejecutamos y colocamos al personaje en el estado de espera
-        GameController.getInstance().setActionStrategy(new AttackAction());
+        GameController.getInstance().setPlayerActionStrategy(new AttackAction());
         GameController.getInstance().playerAction();
         GameController.getInstance().getPlayer().setTurnState(TurnState.WAITING);
         // TODO: ACCION DEL ENEMIGO
+        GameController.getInstance().getEnemy().setTurnState(TurnState.ACTIVE);
+        GameController.getInstance().setEnemyActionStrategy(new AttackAction());
+        GameController.getInstance().enemyAction();
+        GameController.getInstance().getEnemy().setTurnState(TurnState.WAITING);
+        GameController.getInstance().getPlayer().setTurnState(TurnState.ACTIVE);
         // TODO: RESTAURACION DE VARIABLES
         // actualizamos la interfaz grafica con lo ocurrido
         refreshScene();
+        resetStats();
+    }
+
+    @FXML
+    private void defenseButton(){
+        GameController.getInstance().setPlayerActionStrategy(new DefenseAction());
+        GameController.getInstance().playerAction();
+        GameController.getInstance().getPlayer().setTurnState(TurnState.WAITING);
+        // TODO: ACCION DEL ENEMIGO
+ 
+        // TODO: RESTAURACION DE VARIABLES
+        // actualizamos la interfaz grafica con lo ocurrido
+        refreshScene();
+        resetStats();
     }
 
     private void refreshScene(){
@@ -68,6 +85,15 @@ public class Controller {
         enemyLife.setProgress(GameController.getInstance().getEnemy().getLife() / 100);
         playerLife.setProgress(GameController.getInstance().getPlayer().getLife() / 100);
         // TODO: ACTUALIZAR ARMAS
+    }
+
+    private void resetStats(){
+        // TODO: Resetear las estadisticas alteradas del jugador y del enemigo
+        if (GameController.getInstance().getPlayerActionStrategy() instanceof DefenseAction){
+           GameController.getInstance().getPlayer().setDefensePower(GameController.getInstance().getPlayer().getDefensePower() - GameController.getInstance().getPlayer().getCurrentWeapon().getDefense() - 30);
+        } else if (GameController.getInstance().getEnemyActionStrategy() instanceof DefenseAction) {
+            GameController.getInstance().getPlayer().setDefensePower(GameController.getInstance().getEnemy().getDefensePower() - GameController.getInstance().getEnemy().getCurrentWeapon().getDefense() - 30);
+        }
     }
 
     @FXML
