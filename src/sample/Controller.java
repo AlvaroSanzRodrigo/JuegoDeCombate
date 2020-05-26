@@ -42,11 +42,10 @@ public class Controller {
     {
         // Inicializamos la batalla en la interfaz grafica
         GameController.getInstance().setPlayer(new Character("Sanzius",100f, 60f, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 5f, 2f), TurnState.ACTIVE, ""));
-        GameController.getInstance().setEnemy(new Character("Ingieneria", 100f, 60f, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 5f, 2f), TurnState.WAITING, ""));
-        playerName.setText(GameController.getInstance().getPlayer().getName());
-        enemyName.setText(GameController.getInstance().getEnemy().getName());
-        playerWeapon.setText(GameController.getInstance().getPlayer().getCurrentWeapon().getName());
-        enemyWeapon.setText(GameController.getInstance().getEnemy().getCurrentWeapon().getName());
+        //GameController.getInstance().setEnemy(new Character("Ingieneria", 100f, 60f, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 5f, 2f), TurnState.WAITING, ""));
+        GameController.getInstance().getEnemyFromFactory();
+        //recolocamos la escena
+        refreshScene();
     }
 
     @FXML
@@ -98,6 +97,10 @@ public class Controller {
         // actualizamos las barras de vida
         enemyLife.setProgress(GameController.getInstance().getEnemy().getLife() / 100);
         playerLife.setProgress(GameController.getInstance().getPlayer().getLife() / 100);
+        playerName.setText(GameController.getInstance().getPlayer().getName());
+        enemyName.setText(GameController.getInstance().getEnemy().getName());
+        playerWeapon.setText(GameController.getInstance().getPlayer().getCurrentWeapon().getName());
+        enemyWeapon.setText(GameController.getInstance().getEnemy().getCurrentWeapon().getName());
         // TODO: ACTUALIZAR ARMAS
     }
 
