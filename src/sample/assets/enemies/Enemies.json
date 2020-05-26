@@ -1,0 +1,42 @@
+[
+   {
+      "name":"Aurelia",
+      "life":50,
+      "attackPower":10,
+      "defensePower":20,
+      "currentWeapon":{
+         "name":"Espada Larga",
+         "attack":20,
+         "defense":10
+      },
+      "imageRoute":""
+   },
+
+   {
+      "name":"Achernar",
+      "life":50,
+      "attackPower":10,
+      "defensePower":20,
+      "currentWeapon":{
+         "name":"Sable afilado",
+         "attack":20,
+         "defense":10
+      },
+      "imageRoute":""
+   },
+
+   {
+      "name":"Jovian",
+      "life":50,
+      "attackPower":10,
+      "defensePower":20,
+      "currentWeapon":{
+         "name":"Arma generica de RPG por turnos",
+         "attack":20,
+         "defense":10
+      },
+      "imageRoute":""
+   },
+
+
+]

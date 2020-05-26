@@ -50,6 +50,10 @@ public class GameController {
         this.enemyActionStrategy = enemyActionStrategy;
     }
 
+    public void getEnemyFromFactory(){
+       this.enemy = AbstractEnemyFactoryManager.getInstance().createCharacter();
+    }
+
     //Realiza la accion del jugador segun la estrategia que posea
     public void playerAction(){
         playerActionStrategy.action(this.player, this.enemy);
