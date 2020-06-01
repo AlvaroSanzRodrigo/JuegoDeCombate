@@ -1,4 +1,6 @@
-package sample;
+package sample.AbstractFactory;
+
+import sample.Models.Character;
 
 public class AbstractEnemyFactoryManager {
 

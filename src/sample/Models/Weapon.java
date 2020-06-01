@@ -1,4 +1,4 @@
-package sample;
+package sample.Models;
 // Clase de arma
 public class Weapon {
     // Atributos del arma y game stats (ataque, defensa)

@@ -1,4 +1,7 @@
-package sample;
+package sample.Strategy;
+
+import sample.Models.Character;
+
 // Estrategia de ataque
 public class AttackAction implements ActionStrategy {
     @Override

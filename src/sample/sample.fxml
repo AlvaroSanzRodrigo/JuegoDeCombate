@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:controller="sample.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:controller="sample.Controllers.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="117.0" prefWidth="600.0">
          <children>
             <Label prefHeight="17.0" prefWidth="73.0" />
             <ImageView fitHeight="185.0" fitWidth="448.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@assets/characters/7.png" />
+                  <Image url="@../assets/characters/7.png" />
                </image></ImageView>
             <VBox alignment="TOP_RIGHT" prefHeight="197.0" prefWidth="301.0">
                <children>
@@ -60,7 +60,7 @@
                   <Label fx:id="playerName" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="152.0" text="Nombre" textAlignment="CENTER" />
                   <ImageView fitHeight="104.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <image>
-                        <Image url="@assets/characters/6.png" />
+                        <Image url="@../assets/characters/6.png" />
                      </image></ImageView>
                   <ProgressBar fx:id="playerLife" prefWidth="200.0" progress="1.0" style="-fx-accent: green;" GridPane.rowIndex="1" />
                   <Label fx:id="playerWeapon" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="152.0" text="Arma" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />

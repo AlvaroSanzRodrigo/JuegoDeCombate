@@ -10,10 +10,17 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sample.AbstractFactory.AbstractWeaponFactoryManager;
+import sample.Models.Character;
+import sample.Models.Weapon;
+import sample.Singleton.GameController;
+import sample.State.TurnState;
+import sample.Strategy.AttackAction;
+import sample.Strategy.DefenseAction;
+import sample.Strategy.WaitAction;
 
 import java.util.ArrayList;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 public class Controller {
     @FXML
@@ -120,6 +127,7 @@ public class Controller {
     private void battleStatusChecker(){
         if (GameController.getInstance().getEnemy().getLife() <= 0){
             GameController.getInstance().getEnemyFromFactory();
+            GameController.getInstance().getPlayer().setLife(100F);
             // TODO: Get a new weapon and win message
             Weapon weapon = AbstractWeaponFactoryManager.getInstance().createWeapon();
             GameController.getInstance().getPlayer().getWeapons().add(weapon);

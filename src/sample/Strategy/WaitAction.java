@@ -1,7 +1,7 @@
-package sample;
+package sample.Strategy;
 
-import sample.ActionStrategy;
-import sample.Character;
+import sample.Models.Character;
+
 // Estrategia de espera
 public class WaitAction implements ActionStrategy {
     @Override

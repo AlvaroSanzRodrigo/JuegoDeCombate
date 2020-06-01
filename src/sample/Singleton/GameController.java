@@ -1,4 +1,12 @@
-package sample;
+package sample.Singleton;
+
+import sample.AbstractFactory.AbstractEnemyFactoryManager;
+import sample.Models.Character;
+import sample.Strategy.ActionStrategy;
+import sample.TemplateMethod.DefensiveEnemyIA;
+import sample.TemplateMethod.EnemyIATemplate;
+import sample.TemplateMethod.GenericEnemyIA;
+import sample.TemplateMethod.OffensiveEnemyIA;
 
 import java.util.concurrent.ThreadLocalRandom;
 
