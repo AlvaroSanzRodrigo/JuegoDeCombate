@@ -1,8 +1,8 @@
 [
    {
-      "name":"Aurelia",
+      "name":"Aurelia La Fuerte",
       "life":100,
-      "attackPower":7,
+      "attackPower":80,
       "defensePower":6,
       "currentWeapon":{
          "name":"Espada Larga",
@@ -13,7 +13,7 @@
    },
 
    {
-      "name":"Achernar",
+      "name":"Achernar El Debil",
       "life":100,
       "attackPower":9,
       "defensePower":20,
@@ -26,9 +26,9 @@
    },
 
    {
-      "name":"Jovian",
+      "name":"Jovian El Normal",
       "life":100,
-      "attackPower":20,
+      "attackPower":30,
       "defensePower":30,
       "currentWeapon":{
          "name":"Arma generica de RPG por turnos",

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Modality;
@@ -79,6 +80,7 @@ public class Controller {
         GameController.getInstance().getPlayer().setTurnState(TurnState.ACTIVE);
         // RESTAURACION DE VARIABLES
         refreshScene();
+        battleStatusChecker();
         // actualizamos la interfaz grafica con lo ocurrido
         resetStats();
     }
@@ -101,6 +103,25 @@ public class Controller {
         } else if (GameController.getInstance().getEnemyActionStrategy() instanceof DefenseAction) {
             GameController.getInstance().getPlayer().setDefensePower(GameController.getInstance().getEnemy().getDefensePower() - GameController.getInstance().getEnemy().getCurrentWeapon().getDefense() - 30);
         }
+    }
+
+    private void battleStatusChecker(){
+        if (GameController.getInstance().getEnemy().getLife() <= 0){
+            GameController.getInstance().getEnemyFromFactory();
+            // TODO: Get a new weapon and win message
+        }
+
+        if (GameController.getInstance().getPlayer().getLife() <= 0){
+            // TODO: Get a message of game over and close the app
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("GAME OVER");
+            alert.setHeaderText("You loose your battle...");
+            alert.setContentText("be braver next time!");
+            alert.showAndWait();
+            System.exit(0);
+        }
+
+        refreshScene();
     }
 
     @FXML
