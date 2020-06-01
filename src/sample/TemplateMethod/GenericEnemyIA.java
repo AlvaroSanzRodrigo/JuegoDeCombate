@@ -1,9 +1,13 @@
-package sample;
+package sample.TemplateMethod;
 
-import sample.*;
-import sample.Character;
+import sample.Models.Character;
+import sample.Strategy.ActionStrategy;
+import sample.Strategy.AttackAction;
+import sample.Strategy.DefenseAction;
+import sample.Strategy.WaitAction;
+import sample.TemplateMethod.EnemyIATemplate;
 
-public class OffensiveEnemyIA implements EnemyIATemplate {
+public class GenericEnemyIA implements EnemyIATemplate {
 
     Character enemy;
     Character player;
@@ -16,10 +20,10 @@ public class OffensiveEnemyIA implements EnemyIATemplate {
             return new AttackAction();
         }else if(enemy.getLife() <= 45 && player.getLife() >= 25){
             return new WaitAction();
-        }else if(enemy.getLife() <= 25){
+        }else if(enemy.getLife() <= 35){
             return new DefenseAction();
         }else {
-            return new AttackAction();
+            return new DefenseAction();
         }
     }
 

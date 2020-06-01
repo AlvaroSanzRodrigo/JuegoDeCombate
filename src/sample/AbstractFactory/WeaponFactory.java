@@ -1,7 +1,8 @@
-package sample;
+package sample.AbstractFactory;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import sample.Models.Weapon;
 
 import java.io.File;
 import java.io.FileReader;
@@ -11,23 +12,22 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class EnemyFactory implements AbstractEnemyFactory {
+public class WeaponFactory implements AbstractWeaponFactory {
 
     Gson gson = new Gson();
 
     @Override
-    public Character createEnemy() {
-        List<Character> list = null;
+    public Weapon createWeapon() {
+        List<Weapon> list = null;
         try {
-            String path = new File("").getAbsolutePath().concat("/src/sample/assets/enemies/Enemies.json");
+            String path = new File("").getAbsolutePath().concat("/src/sample/assets/weapons/Weapons.json");
             Reader reader = new FileReader(path);
-            list = gson.fromJson(reader, new TypeToken<List<Character>>() {}.getType());
+            list = gson.fromJson(reader, new TypeToken<List<Weapon>>() {}.getType());
         } catch (IOException e){
             System.err.println(e.getMessage());
         }
         Random rand = new Random();
-        Character enemy = list.get(ThreadLocalRandom.current().nextInt(0, list.size() - 1));
-        enemy.setTurnState(TurnState.WAITING);
-        return enemy;
+        assert list != null;
+        return list.get(ThreadLocalRandom.current().nextInt(0, list.size() - 1));
     }
 }

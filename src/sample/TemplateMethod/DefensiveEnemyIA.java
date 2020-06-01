@@ -1,6 +1,12 @@
-package sample;
+package sample.TemplateMethod;
 
-public class GenericEnemyIA implements EnemyIATemplate {
+import sample.Models.Character;
+import sample.Strategy.ActionStrategy;
+import sample.Strategy.AttackAction;
+import sample.Strategy.DefenseAction;
+import sample.Strategy.WaitAction;
+
+public class DefensiveEnemyIA implements EnemyIATemplate {
 
     Character enemy;
     Character player;
@@ -8,7 +14,7 @@ public class GenericEnemyIA implements EnemyIATemplate {
     @Override
     public ActionStrategy getActionStrategy() {
         if (enemy.getLife() <= 45 && player.getLife() <= 25){
-            return new AttackAction();
+            return new WaitAction();
         }else if (enemy.getLife() >= 45){
             return new AttackAction();
         }else if(enemy.getLife() <= 45 && player.getLife() >= 25){
@@ -19,7 +25,6 @@ public class GenericEnemyIA implements EnemyIATemplate {
             return new DefenseAction();
         }
     }
-
 
     @Override
     public void setEnemy(Character enemy) {

@@ -5,6 +5,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import sample.Models.Weapon;
+import sample.Singleton.GameController;
 
 import java.util.List;
 import java.util.stream.Collectors;
