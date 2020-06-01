@@ -1,3 +1,5 @@
+package sample;
+
 import sample.*;
 import sample.Character;
 
