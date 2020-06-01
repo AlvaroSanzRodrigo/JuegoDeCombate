@@ -19,4 +19,15 @@ public class GenericEnemyIA implements EnemyIATemplate {
             return new DefenseAction();
         }
     }
+
+
+    @Override
+    public void setEnemy(Character enemy) {
+        this.enemy = enemy;
+    }
+
+    @Override
+    public void setPlayer(Character player) {
+        this.player = player;
+    }
 }

@@ -22,4 +22,15 @@ public class OffensiveEnemyIA implements EnemyIATemplate {
             return new AttackAction();
         }
     }
+
+
+    @Override
+    public void setEnemy(Character enemy) {
+        this.enemy = enemy;
+    }
+
+    @Override
+    public void setPlayer(Character player) {
+        this.player = player;
+    }
 }
