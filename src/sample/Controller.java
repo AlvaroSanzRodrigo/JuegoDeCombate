@@ -41,7 +41,7 @@ public class Controller {
     private void initialize()
     {
         // Inicializamos la batalla en la interfaz grafica
-        GameController.getInstance().setPlayer(new Character("Sanzius",100f, 60f, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 5f, 2f), TurnState.ACTIVE, ""));
+        GameController.getInstance().setPlayer(new Character("Sanzius",100f, 45F, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 10f, 5f), TurnState.ACTIVE, ""));
         //GameController.getInstance().setEnemy(new Character("Ingieneria", 100f, 60f, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 5f, 2f), TurnState.WAITING, ""));
         GameController.getInstance().getEnemyFromFactory();
         //recolocamos la escena
@@ -52,41 +52,31 @@ public class Controller {
     private void attackButton() {
         // Cuando se pulsa atacar actualizamos la estrategia del personaje, la ejecutamos y colocamos al personaje en el estado de espera
         GameController.getInstance().setPlayerActionStrategy(new AttackAction());
-        GameController.getInstance().playerAction();
-        GameController.getInstance().getPlayer().setTurnState(TurnState.WAITING);
-        // TODO: ACCION DEL ENEMIGO
-        GameController.getInstance().getEnemy().setTurnState(TurnState.ACTIVE);
-        GameController.getInstance().setEnemyActionStrategy(new AttackAction());
-        GameController.getInstance().enemyAction();
-        GameController.getInstance().getEnemy().setTurnState(TurnState.WAITING);
-        GameController.getInstance().getPlayer().setTurnState(TurnState.ACTIVE);
-        // TODO: RESTAURACION DE VARIABLES
-        // actualizamos la interfaz grafica con lo ocurrido
-        refreshScene();
-        resetStats();
+        gameAction();
     }
 
     @FXML
     private void defenseButton(){
         GameController.getInstance().setPlayerActionStrategy(new DefenseAction());
-        GameController.getInstance().playerAction();
-        GameController.getInstance().getPlayer().setTurnState(TurnState.WAITING);
-        // TODO: ACCION DEL ENEMIGO
- 
-        // TODO: RESTAURACION DE VARIABLES
-        // actualizamos la interfaz grafica con lo ocurrido
-        refreshScene();
-        resetStats();
+        this.gameAction();
     }
 
     @FXML
     private void waitButton(){
         // TODO: implement wait strategy, easy peasy lemon squezzy
         GameController.getInstance().setPlayerActionStrategy(new WaitAction());
+        gameAction();
+    }
+
+    private  void gameAction(){
         GameController.getInstance().playerAction();
         GameController.getInstance().getPlayer().setTurnState(TurnState.WAITING);
-        // TODO: ACCION DEL ENEMIGO
-
+        // ACCION DEL ENEMIGO
+        GameController.getInstance().getEnemy().setTurnState(TurnState.ACTIVE);
+        GameController.getInstance().setEnemyActionStrategy(GameController.getInstance().getEnemyIA().getActionStrategy());
+        GameController.getInstance().enemyAction();
+        GameController.getInstance().getEnemy().setTurnState(TurnState.WAITING);
+        GameController.getInstance().getPlayer().setTurnState(TurnState.ACTIVE);
         // RESTAURACION DE VARIABLES
         refreshScene();
         // actualizamos la interfaz grafica con lo ocurrido

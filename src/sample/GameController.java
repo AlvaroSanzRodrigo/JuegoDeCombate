@@ -1,5 +1,7 @@
 package sample;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 // Controla el juego y calcula todos los posibles eventos (ataque, defensa...)
 public class GameController {
     // Implementacion del patron Singleton
@@ -53,6 +55,23 @@ public class GameController {
 
     public void getEnemyFromFactory(){
        this.enemy = AbstractEnemyFactoryManager.getInstance().createCharacter();
+       int randomInt = ThreadLocalRandom.current().nextInt(0, 2);
+       switch (randomInt){
+           case 0:
+               this.enemyIA = new GenericEnemyIA();
+               break;
+           case 1:
+               this.enemyIA = new DefensiveEnemyIA();
+               break;
+           case 2:
+               this.enemyIA = new OffensiveEnemyIA();
+               break;
+           default:
+               this.enemyIA = new GenericEnemyIA();
+       }
+
+       this.enemyIA.setEnemy(this.enemy);
+       this.enemyIA.setPlayer(this.player);
     }
 
     public EnemyIATemplate getEnemyIA() {
