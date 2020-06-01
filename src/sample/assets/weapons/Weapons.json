@@ -1,0 +1,22 @@
+[
+  {
+    "name":"Hacha Larga",
+    "attack":40,
+    "defense":10
+  },
+  {
+    "name":"Fusil Magico",
+    "attack":20,
+    "defense":10
+  },
+  {
+    "name":"Traje de Iron Man",
+    "attack":100,
+    "defense":100
+  },
+  {
+    "name":"Varita de Sauco",
+    "attack":20,
+    "defense":10
+  }
+]
