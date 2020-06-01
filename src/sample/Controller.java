@@ -7,10 +7,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 public class Controller {
@@ -43,7 +45,15 @@ public class Controller {
     {
         // Inicializamos la batalla en la interfaz grafica
         GameController.getInstance().setPlayer(new Character("Sanzius",100f, 45F, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 10f, 5f), TurnState.ACTIVE, ""));
-        //GameController.getInstance().setEnemy(new Character("Ingieneria", 100f, 60f, 30F, new ArrayList<Weapon>(), new Weapon("Basic Sword", 5f, 2f), TurnState.WAITING, ""));
+        // Lanzamos uin dialog para pedir el nombre!
+        TextInputDialog dialog = new TextInputDialog("Nombre");
+        dialog.setTitle("Introduce tu nombre");
+        dialog.setHeaderText("Bienvenido!");
+        dialog.setContentText("Por favor, introduce tu nombre:");
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(name -> GameController.getInstance().getPlayer().setName(name));
+
+        // Creamos un enemigo
         GameController.getInstance().getEnemyFromFactory();
         //recolocamos la escena
         refreshScene();
@@ -64,7 +74,7 @@ public class Controller {
 
     @FXML
     private void waitButton(){
-        // TODO: implement wait strategy, easy peasy lemon squezzy
+        // implement wait strategy, easy peasy lemon squezzy
         GameController.getInstance().setPlayerActionStrategy(new WaitAction());
         gameAction();
     }
@@ -99,7 +109,7 @@ public class Controller {
     }
 
     private void resetStats(){
-        // TODO: Resetear las estadisticas alteradas del jugador y del enemigo
+        //  Resetear las estadisticas alteradas del jugador y del enemigo
         if (GameController.getInstance().getPlayerActionStrategy() instanceof DefenseAction){
            GameController.getInstance().getPlayer().setDefensePower(GameController.getInstance().getPlayer().getDefensePower() - GameController.getInstance().getPlayer().getCurrentWeapon().getDefense() - 30);
         } else if (GameController.getInstance().getEnemyActionStrategy() instanceof DefenseAction) {
@@ -135,7 +145,7 @@ public class Controller {
 
     @FXML
     private void chooseWeaponButton() throws Exception {
-        // TODO: SELECCION DE ARMAS MEDIANTE LISTA AUTORELLENABLE
+        // SELECCION DE ARMAS MEDIANTE LISTA AUTORELLENABLE
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("weaponChooser.fxml"));
         Parent parent = fxmlLoader.load();
         Scene scene = new Scene(parent, 300, 200);
