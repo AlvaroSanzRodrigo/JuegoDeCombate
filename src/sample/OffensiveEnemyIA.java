@@ -1,6 +1,9 @@
 package sample;
 
-public class DefensiveEnemyIA implements EnemyIATemplate {
+import sample.*;
+import sample.Character;
+
+public class OffensiveEnemyIA implements EnemyIATemplate {
 
     Character enemy;
     Character player;
@@ -8,15 +11,15 @@ public class DefensiveEnemyIA implements EnemyIATemplate {
     @Override
     public ActionStrategy getActionStrategy() {
         if (enemy.getLife() <= 45 && player.getLife() <= 25){
-            return new WaitAction();
+            return new AttackAction();
         }else if (enemy.getLife() >= 45){
             return new AttackAction();
         }else if(enemy.getLife() <= 45 && player.getLife() >= 25){
             return new WaitAction();
-        }else if(enemy.getLife() <= 35){
+        }else if(enemy.getLife() <= 25){
             return new DefenseAction();
         }else {
-            return new DefenseAction();
+            return new AttackAction();
         }
     }
 }
