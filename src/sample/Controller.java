@@ -143,5 +143,6 @@ public class Controller {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
+        refreshScene();
     }
 }
