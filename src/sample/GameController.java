@@ -13,6 +13,7 @@ public class GameController {
     private Character player;
     private ActionStrategy playerActionStrategy;
     private ActionStrategy enemyActionStrategy;
+    private EnemyIATemplate enemyIA;
 
     public ActionStrategy getPlayerActionStrategy() {
         return playerActionStrategy;
@@ -52,6 +53,14 @@ public class GameController {
 
     public void getEnemyFromFactory(){
        this.enemy = AbstractEnemyFactoryManager.getInstance().createCharacter();
+    }
+
+    public EnemyIATemplate getEnemyIA() {
+        return enemyIA;
+    }
+
+    public void setEnemyIA(EnemyIATemplate enemyIA) {
+        this.enemyIA = enemyIA;
     }
 
     //Realiza la accion del jugador segun la estrategia que posea
