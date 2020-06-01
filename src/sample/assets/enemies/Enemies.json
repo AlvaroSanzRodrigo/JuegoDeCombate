@@ -1,0 +1,42 @@
+[
+   {
+      "name":"Aurelia La Fuerte",
+      "life":100,
+      "attackPower":80,
+      "defensePower":6,
+      "currentWeapon":{
+         "name":"Espada Larga",
+         "attack":20,
+         "defense":10
+      },
+      "imageRoute":""
+   },
+
+   {
+      "name":"Achernar El Debil",
+      "life":100,
+      "attackPower":9,
+      "defensePower":20,
+      "currentWeapon":{
+         "name":"Sable afilado",
+         "attack":20,
+         "defense":10
+      },
+      "imageRoute":""
+   },
+
+   {
+      "name":"Jovian El Normal",
+      "life":100,
+      "attackPower":30,
+      "defensePower":30,
+      "currentWeapon":{
+         "name":"Arma generica de RPG por turnos",
+         "attack":20,
+         "defense":10
+      },
+      "imageRoute":""
+   },
+
+
+]

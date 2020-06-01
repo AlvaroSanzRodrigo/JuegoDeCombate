@@ -1,10 +1,11 @@
-package sample;
+package sample.Models;
 // Clase de arma
 public class Weapon {
     // Atributos del arma y game stats (ataque, defensa)
     private String name;
     private float attack;
     private float defense;
+
 
     // Constructores
     public Weapon() {

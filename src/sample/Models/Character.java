@@ -1,4 +1,6 @@
-package sample;
+package sample.Models;
+
+import sample.State.TurnState;
 
 import java.util.ArrayList;
 // Clase de personaje con todos sus atributos necesarios

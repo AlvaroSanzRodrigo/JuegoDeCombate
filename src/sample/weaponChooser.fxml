@@ -7,18 +7,16 @@
 <?import javafx.scene.image.ImageView?>
 
 
-<DialogPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<DialogPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.WeaponChooserController">
    <header>
       <Label alignment="CENTER" text="Escoge arma" />
    </header>
    <graphic>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/weapons/sword.png" />
-         </image>
+         <Image url="@../assets/weapons/sword.png"/>
       </ImageView>
    </graphic>
    <content>
-      <ListView prefHeight="200.0" prefWidth="200.0" />
+      <ListView prefHeight="200.0" prefWidth="200.0" fx:id="weaponList"/>
    </content>
 </DialogPane>
