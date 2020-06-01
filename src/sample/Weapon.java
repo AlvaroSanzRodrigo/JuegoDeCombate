@@ -6,6 +6,7 @@ public class Weapon {
     private float attack;
     private float defense;
 
+
     // Constructores
     public Weapon() {
     }

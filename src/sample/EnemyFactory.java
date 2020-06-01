@@ -26,7 +26,7 @@ public class EnemyFactory implements AbstractEnemyFactory {
             System.err.println(e.getMessage());
         }
         Random rand = new Random();
-        Character enemy = list.get(ThreadLocalRandom.current().nextInt(0, list.size()));
+        Character enemy = list.get(ThreadLocalRandom.current().nextInt(0, list.size() - 1));
         enemy.setTurnState(TurnState.WAITING);
         return enemy;
     }
