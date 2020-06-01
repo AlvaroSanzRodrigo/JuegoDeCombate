@@ -89,8 +89,10 @@ public class Controller {
         // actualizamos las barras de vida
         enemyLife.setProgress(GameController.getInstance().getEnemy().getLife() / 100);
         playerLife.setProgress(GameController.getInstance().getPlayer().getLife() / 100);
+        // actualizamos los nombres
         playerName.setText(GameController.getInstance().getPlayer().getName());
         enemyName.setText(GameController.getInstance().getEnemy().getName());
+        // actulizamos las armas
         playerWeapon.setText(GameController.getInstance().getPlayer().getCurrentWeapon().getName());
         enemyWeapon.setText(GameController.getInstance().getEnemy().getCurrentWeapon().getName());
         // TODO: ACTUALIZAR ARMAS
@@ -109,6 +111,13 @@ public class Controller {
         if (GameController.getInstance().getEnemy().getLife() <= 0){
             GameController.getInstance().getEnemyFromFactory();
             // TODO: Get a new weapon and win message
+            Weapon weapon = AbstractWeaponFactoryManager.getInstance().createWeapon();
+            GameController.getInstance().getPlayer().getWeapons().add(weapon);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("You Win");
+            alert.setHeaderText("Congratulations and you got a new weapon");
+            alert.setContentText("Weapon name: " + weapon.getName() + "\n Weapon attack: " + weapon.getAttack() + " \n Weapon Defense: " + weapon.getDefense());
+            alert.showAndWait();
         }
 
         if (GameController.getInstance().getPlayer().getLife() <= 0){
